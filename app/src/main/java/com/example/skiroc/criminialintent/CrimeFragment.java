@@ -63,6 +63,14 @@ public class CrimeFragment extends Fragment {
                 // intentionally left blank
             }
 
+            /**
+             * Sets the crime's title
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 mCrime.setTitle(charSequence.toString());
