@@ -7,6 +7,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
@@ -25,6 +27,8 @@ public class CrimeFragment extends Fragment {
      */
     private Crime mCrime;
     private EditText mTitleField;
+    private Button mDateButton;
+    private CheckBox mSolvedCheckBox;
 
     /**
      * Fragment lifecycle methods must be public
@@ -81,6 +85,10 @@ public class CrimeFragment extends Fragment {
                 // intentionally left blank
             }
         });
+
+        mDateButton = (Button)view.findViewById(R.id.crime_date_button);
+        mDateButton.setText(mCrime.getDate().toString());
+        mDateButton.setEnabled(false);
 
         return view;
     }
