@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.skiroc.criminialintent.R;
+import com.example.skiroc.criminialintent.model.Crime;
+
+import java.util.List;
 
 /**
  * Created by skiroc on 2/6/17.
@@ -39,6 +42,30 @@ public class CrimeListFragment extends Fragment {
             super(itemView);
 
             mTitleTextView = (TextView) itemView;
+        }
+    }
+
+    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+
+        private List<Crime> mCrimes;
+
+        public CrimeAdapter(List<Crime> crimes) {
+            mCrimes = crimes;
+        }
+
+        @Override
+        public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(CrimeHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
         }
     }
 }
