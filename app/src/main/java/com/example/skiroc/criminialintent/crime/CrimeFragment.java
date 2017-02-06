@@ -1,4 +1,4 @@
-package com.example.skiroc.criminialintent;
+package com.example.skiroc.criminialintent.crime;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+
+import com.example.skiroc.criminialintent.R;
+import com.example.skiroc.criminialintent.model.Crime;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
