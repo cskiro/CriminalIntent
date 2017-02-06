@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.skiroc.criminialintent.R;
 import com.example.skiroc.criminialintent.model.Crime;
+import com.example.skiroc.criminialintent.model.CrimeLab;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class CrimeListFragment extends Fragment {
 
     private RecyclerView mCrimeRecyclerView;
+    private CrimeAdapter mCrimeAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +32,8 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView = (RecyclerView) view
                 .findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        updateUI();
 
         return view;
     }
@@ -72,7 +76,7 @@ public class CrimeListFragment extends Fragment {
         /**
          * Binds a ViewHolder's View to your model object
          * Receives the ViewHolder and the position in your data set
-         * 
+         *
          * @param holder
          * @param position
          */
@@ -86,5 +90,13 @@ public class CrimeListFragment extends Fragment {
         public int getItemCount() {
             return mCrimes.size();
         }
+    }
+
+    private void updateUI() {
+        CrimeLab crimeLab = CrimeLab.getCrimeLab(getActivity());
+        List<Crime> crimes = crimeLab.getCrimes();
+
+        mCrimeAdapter = new CrimeAdapter(crimes);
+        mCrimeRecyclerView.setAdapter(mCrimeAdapter);
     }
 }
