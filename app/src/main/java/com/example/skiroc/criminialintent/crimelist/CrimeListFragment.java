@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.skiroc.criminialintent.R;
 
@@ -28,5 +29,16 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
+    }
+
+    private class CrimeHolder extends RecyclerView.ViewHolder {
+
+        public TextView mTitleTextView;
+
+        public CrimeHolder(View itemView) {
+            super(itemView);
+
+            mTitleTextView = (TextView) itemView;
+        }
     }
 }
