@@ -74,7 +74,7 @@ public class CrimeListFragment extends Fragment {
              * CrimeListFragment uses getActivity()to pass its hosting activity as the Context
              * object that the Intent constructor requires
              */
-            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
 //            Toast.makeText(getActivity(),
 //                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
