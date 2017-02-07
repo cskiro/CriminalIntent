@@ -1,5 +1,6 @@
 package com.example.skiroc.criminialintent.crimelist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.skiroc.criminialintent.R;
+import com.example.skiroc.criminialintent.crime.CrimeActivity;
 import com.example.skiroc.criminialintent.model.Crime;
 import com.example.skiroc.criminialintent.model.CrimeLab;
 
@@ -67,8 +69,15 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(),
-                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            /**
+             * CrimeListFragment creates an explicit intent that name the CrimeActivity class
+             * CrimeListFragment uses getActivity()to pass its hosting activity as the Context
+             * object that the Intent constructor requires
+             */
+            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+            startActivity(intent);
+//            Toast.makeText(getActivity(),
+//                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
         }
     }
 
