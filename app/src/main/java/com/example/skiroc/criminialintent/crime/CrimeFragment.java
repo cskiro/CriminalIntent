@@ -14,9 +14,11 @@ import android.widget.EditText;
 
 import com.example.skiroc.criminialintent.R;
 import com.example.skiroc.criminialintent.model.Crime;
+import com.example.skiroc.criminialintent.model.CrimeLab;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by skiroc on 1/27/17.
@@ -50,7 +52,16 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCrime = new Crime();
+//        mCrime = new Crime();
+        /**
+         * getIntent() returns the Intent used to start CrimeActivity
+         *
+         * getSerializableExtra(String) is called on the Intent to pull
+         * the UUID out into a variable
+         */
+        UUID crimeId = (UUID) getActivity().getIntent()
+                .getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+        mCrime = CrimeLab.getCrimeLab(getActivity()).getCrime(crimeId);
     }
 
     /**
