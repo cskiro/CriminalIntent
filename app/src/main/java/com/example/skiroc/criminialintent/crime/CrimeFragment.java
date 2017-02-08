@@ -31,6 +31,8 @@ import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
 
+    private static final String ARG_CRIME_ID = "crime_id";
+
     /**
      * Instance (member) variables
      */
@@ -39,14 +41,26 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
 
+    public static CrimeFragment newInstance(UUID crimeId) {
+        // Creating a Bundle object
+        Bundle args = new Bundle();
+        // Adding arguments to the Bundle
+        args.putSerializable(ARG_CRIME_ID, crimeId);
+        // Creating a CrimeFragmnet object
+        CrimeFragment crimeFragment = new CrimeFragment();
+        // Attaching arguments bundle to a fragment
+        crimeFragment.setArguments(args);
+
+        return crimeFragment;
+    }
+
     /**
      * Fragment lifecycle methods must be public
      * because they will be called by the activity
      * hosting the fragment
-     */
-
-    /**
+     * <p>
      * Configuring the fragment instance
+     *
      * @param savedInstanceState
      */
     @Override
@@ -67,8 +81,8 @@ public class CrimeFragment extends Fragment {
     /**
      * Inflates the layout of the fragment's view
      *
-     * @param inflater passes the layout resource ID
-     * @param container view's parent; needed to configure the widgets properly
+     * @param inflater           passes the layout resource ID
+     * @param container          view's parent; needed to configure the widgets properly
      * @param savedInstanceState tells layout inflater whether to add the
      *                           inflated view to the view's parent
      * @return View
@@ -78,7 +92,7 @@ public class CrimeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crime, container, false);
 
-        mTitleField = (EditText)view.findViewById(R.id.crime_title);
+        mTitleField = (EditText) view.findViewById(R.id.crime_title);
         mTitleField.setText(mCrime.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,11 +123,11 @@ public class CrimeFragment extends Fragment {
         Date date = new Date();
         String dateString = dateFormat.format(date);
 
-        mDateButton = (Button)view.findViewById(R.id.crime_date_button);
+        mDateButton = (Button) view.findViewById(R.id.crime_date_button);
         mDateButton.setText(dateString);
         mDateButton.setEnabled(false);
 
-        mSolvedCheckBox = (CheckBox)view.findViewById(R.id.crime_solved_checkbox);
+        mSolvedCheckBox = (CheckBox) view.findViewById(R.id.crime_solved_checkbox);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
