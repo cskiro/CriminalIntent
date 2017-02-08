@@ -66,15 +66,20 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mCrime = new Crime();
         /**
          * getIntent() returns the Intent used to start CrimeActivity
          *
          * getSerializableExtra(String) is called on the Intent to pull
          * the UUID out into a variable
          */
-        UUID crimeId = (UUID) getActivity().getIntent()
-                .getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+//        UUID crimeId = (UUID) getActivity().getIntent()
+//                .getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+
+        /**
+         * getArguments() allows a fragment to access its arguments
+         * along with a type-specific "get" method of Bundle
+         */
+        UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.getCrimeLab(getActivity()).getCrime(crimeId);
     }
 
