@@ -1,9 +1,11 @@
-package com.example.skiroc.criminialintent;
+package com.example.skiroc.criminalintent;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+
+import com.example.skiroc.criminialintent.R;
 
 /**
  * Created by skiroc on 2/6/17.
