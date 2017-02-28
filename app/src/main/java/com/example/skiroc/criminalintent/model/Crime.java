@@ -1,4 +1,4 @@
-package com.example.skiroc.criminialintent.model;
+package com.example.skiroc.criminalintent.model;
 
 import java.util.Date;
 import java.util.UUID;
