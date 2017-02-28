@@ -1,8 +1,8 @@
-package com.example.skiroc.criminialintent.crimelist;
+package com.example.skiroc.criminalintent.crimelist;
 
 import android.support.v4.app.Fragment;
 
-import com.example.skiroc.criminialintent.SingleFragmentActivity;
+import com.example.skiroc.criminalintent.SingleFragmentActivity;
 
 /**
  * Created by skiroc on 2/6/17.
