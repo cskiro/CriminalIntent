@@ -1,4 +1,4 @@
-package com.example.skiroc.criminialintent.model;
+package com.example.skiroc.criminalintent.model;
 
 import android.content.Context;
 
