@@ -1,10 +1,10 @@
-package com.example.skiroc.criminialintent.crime;
+package com.example.skiroc.criminalintent.crime;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.example.skiroc.criminialintent.SingleFragmentActivity;
+import com.example.skiroc.criminalintent.SingleFragmentActivity;
 
 import java.util.UUID;
 
