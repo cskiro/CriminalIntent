@@ -1,4 +1,4 @@
-package com.example.skiroc.criminialintent.crimelist;
+package com.example.skiroc.criminalintent.crimelist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.skiroc.criminialintent.R;
-import com.example.skiroc.criminialintent.crime.CrimeActivity;
-import com.example.skiroc.criminialintent.model.Crime;
-import com.example.skiroc.criminialintent.model.CrimeLab;
+import com.example.skiroc.criminalintent.crime.CrimeActivity;
+import com.example.skiroc.criminalintent.model.Crime;
+import com.example.skiroc.criminalintent.model.CrimeLab;
 
 import java.util.List;
 
