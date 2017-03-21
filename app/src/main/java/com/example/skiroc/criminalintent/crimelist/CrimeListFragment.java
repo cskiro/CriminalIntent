@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.skiroc.criminialintent.R;
-import com.example.skiroc.criminalintent.crime.CrimeActivity;
+import com.example.skiroc.criminalintent.CrimePagerActivity;
 import com.example.skiroc.criminalintent.model.Crime;
 import com.example.skiroc.criminalintent.model.CrimeLab;
+import com.example.skiroc.criminialintent.R;
 
 import java.util.List;
 
@@ -31,13 +31,10 @@ public class CrimeListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
-
         mCrimeRecyclerView = (RecyclerView) view
                 .findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         updateUI();
-
         return view;
     }
 
@@ -69,14 +66,12 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             /**
-             * CrimeListFragment creates an explicit intent that name the CrimeActivity class
+             * CrimeListFragment creates an explicit intent that name the CrimePagerActivity class
              * CrimeListFragment uses getActivity()to pass its hosting activity as the Context
              * object that the Intent constructor requires
              */
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
-//            Toast.makeText(getActivity(),
-//                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
         }
     }
 
