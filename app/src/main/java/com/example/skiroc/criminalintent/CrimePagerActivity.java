@@ -28,19 +28,29 @@ public class CrimePagerActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime_pager);
 
+        // Finding ViewPager in the activity's view
         mViewPager = (ViewPager) findViewById(R.id.activity_crime_view_pager);
 
+        // Retrieving list of crimes
         mCrimes = CrimeLab.getCrimeLab(this).getCrimes();
+
+        // Getting the activity's instance of FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Setting the adapter to be an unnamed instance of FragmentStatePagerAdapter
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
+                // Fetching the crime instance for the given position in the list
                 Crime crime = mCrimes.get(position);
+
+                // Getting ID of the crime to create and return a properly configured CrimeFragment
                 return CrimeFragment.newInstance(crime.getId());
             }
 
             @Override
             public int getCount() {
+                // Returns number of crimes in the ArrayList
                 return mCrimes.size();
             }
         });
