@@ -2,6 +2,7 @@ package com.example.skiroc.criminalintent.crime;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import com.example.skiroc.criminalintent.datepicker.DatePickerFragment;
 import com.example.skiroc.criminalintent.model.Crime;
 import com.example.skiroc.criminalintent.model.CrimeLab;
 import com.example.skiroc.criminialintent.R;
@@ -32,6 +34,7 @@ import java.util.UUID;
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
+    private static final String DIALOG_DATE = "DialogDate";
 
     /**
      * Instance (member) variables
@@ -114,8 +117,14 @@ public class CrimeFragment extends Fragment {
 
         mDateButton = (Button) view.findViewById(R.id.crime_date_button);
         mDateButton.setText(dateString);
-        mDateButton.setEnabled(false);
-
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                DatePickerFragment dialog = new DatePickerFragment();
+                dialog.show(fragmentManager, DIALOG_DATE);
+            }
+        });
         mSolvedCheckBox = (CheckBox) view.findViewById(R.id.crime_solved_checkbox);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
