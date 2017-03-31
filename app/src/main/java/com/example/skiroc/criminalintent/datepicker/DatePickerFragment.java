@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 
 import com.example.skiroc.criminialintent.R;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -30,11 +31,23 @@ public class DatePickerFragment extends DialogFragment {
         datePickerFragment.setArguments(args);
         return datePickerFragment;
     }
-    View mView = LayoutInflater.from(getActivity())
-            .inflate(R.layout.dialog_date, null);
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Date date = (Date) getArguments().getSerializable(ARG_DATE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        View mView = LayoutInflater.from(getActivity())
+                .inflate(R.layout.dialog_date, null);
+
+        mDatePicker = (DatePicker) mView.findViewById(R.id.dialog_date_date_picker);
+        mDatePicker.init(year, month, day, null);
+
         return new AlertDialog.Builder(getActivity())
                 .setView(mView)
                 .setTitle(R.string.date_picker_title)
