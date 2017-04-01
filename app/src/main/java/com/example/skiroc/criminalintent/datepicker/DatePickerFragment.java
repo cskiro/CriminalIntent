@@ -1,6 +1,7 @@
 package com.example.skiroc.criminalintent.datepicker;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +19,8 @@ import java.util.Date;
  */
 
 public class DatePickerFragment extends DialogFragment {
+
+    public static final String EXTRA_DATE = "com.example.skiroc.criminalintent.date";
 
     private static final String ARG_DATE = "date";
 
@@ -53,5 +56,17 @@ public class DatePickerFragment extends DialogFragment {
                 .setTitle(R.string.date_picker_title)
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
+    }
+
+    private void sendResult(int resultCode, Date date) {
+        if (getTargetFragment() == null) {
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_DATE, date);
+
+        getTargetFragment()
+                .onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
 }
