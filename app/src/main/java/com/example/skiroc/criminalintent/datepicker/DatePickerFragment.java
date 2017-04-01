@@ -1,6 +1,8 @@
 package com.example.skiroc.criminalintent.datepicker;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -13,6 +15,7 @@ import com.example.skiroc.criminialintent.R;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by skiroc on 3/31/17.
@@ -54,7 +57,17 @@ public class DatePickerFragment extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setView(mView)
                 .setTitle(R.string.date_picker_title)
-                .setPositiveButton(android.R.string.ok, null)
+                .setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                int year = mDatePicker.getYear();
+                                int month = mDatePicker.getMonth();
+                                int day = mDatePicker.getDayOfMonth();
+                                Date date = new GregorianCalendar(year, month, day).getTime();
+                                sendResult(Activity.RESULT_OK, date);
+                            }
+                        })
                 .create();
     }
 
