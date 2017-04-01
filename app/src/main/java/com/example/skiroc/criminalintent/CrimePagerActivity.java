@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.skiroc.criminalintent.crime.CrimeFragment;
 import com.example.skiroc.criminalintent.model.Crime;
@@ -21,7 +22,7 @@ import java.util.UUID;
  * Created by skiroc on 2/28/17.
  */
 
-public class CrimePagerActivity extends FragmentActivity {
+public class CrimePagerActivity extends AppCompatActivity {
     private static final String EXTRA_CRIME_ID =
             "com.example.skiroc.criminalintent.crime_id";
 
