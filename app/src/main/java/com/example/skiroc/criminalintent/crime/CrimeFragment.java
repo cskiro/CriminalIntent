@@ -115,12 +115,8 @@ public class CrimeFragment extends Fragment {
             }
         });
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
-        Date date = new Date();
-        String dateString = dateFormat.format(date);
-
         mDateButton = (Button) view.findViewById(R.id.crime_date_button);
-        mDateButton.setText(dateString);
+        updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,7 +150,11 @@ public class CrimeFragment extends Fragment {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
-            mDateButton.setText(mCrime.getDate().toString());
+            updateDate();
         }
+    }
+
+    private void updateDate() {
+        mDateButton.setText(mCrime.getDate().toString());
     }
 }
