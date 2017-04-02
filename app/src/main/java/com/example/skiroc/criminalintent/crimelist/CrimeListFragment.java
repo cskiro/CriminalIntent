@@ -3,6 +3,7 @@ package com.example.skiroc.criminalintent.crimelist;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -149,6 +150,15 @@ public class CrimeListFragment extends Fragment {
         } else {
             mCrimeAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void updateSubtitle() {
+        CrimeLab crimeLab = CrimeLab.getCrimeLab(getActivity());
+        int crimeCount = crimeLab.getCrimes().size();
+        String subtitle = getString(R.string.subtitle_format, crimeCount);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
     @Override
