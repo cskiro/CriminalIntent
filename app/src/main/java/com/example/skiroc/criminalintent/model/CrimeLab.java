@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.skiroc.criminalintent.database.CrimeBaseHelper;
+import com.example.skiroc.criminalintent.database.CrimeCursorWrapper;
 import com.example.skiroc.criminalintent.database.CrimeDbSchema;
 
 import java.util.UUID;
@@ -34,7 +35,7 @@ public class CrimeLab {
 
     public void addCrime(Crime crime) {
         ContentValues values = getContentValues(crime);
-        
+
         mDatabase.insert(CrimeDbSchema.CrimeTable.NAME, null, values);
     }
 
@@ -52,7 +53,7 @@ public class CrimeLab {
 
         mDatabase.update(CrimeDbSchema.CrimeTable.NAME, values,
                 CrimeDbSchema.CrimeTable.Columns.UUID + " = ?",
-                new String[] { uuidString });
+                new String[]{uuidString});
     }
 
     private static ContentValues getContentValues(Crime crime) {
@@ -65,7 +66,7 @@ public class CrimeLab {
         return values;
     }
 
-    private Cursor queryCrimes(String whereClause, String[] whereArgs) {
+    private CrimeCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 CrimeDbSchema.CrimeTable.NAME,
                 null, // Columns - null selects all columns
@@ -77,6 +78,6 @@ public class CrimeLab {
                 null // orderBy
         );
 
-        return  cursor;
+        return new CrimeCursorWrapper(cursor);
     }
 }
