@@ -157,7 +157,7 @@ public class CrimeFragment extends Fragment {
                 UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
                 CrimeLab crimeLab = CrimeLab.getCrimeLab(getActivity());
                 mCrime = crimeLab.getCrime(crimeId);
-                crimeLab.deleteCrime(mCrime);
+                crimeLab.deleteCrime(mCrime.getId());
                 getActivity().finish();
                 return true;
             default:
