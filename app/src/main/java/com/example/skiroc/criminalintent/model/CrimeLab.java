@@ -32,7 +32,8 @@ public class CrimeLab {
     }
 
     public void addCrime(Crime crime) {
-
+        ContentValues values = getContentValues(crime);
+        mDatabase.insert(CrimeDbSchema.CrimeTable.NAME, null, values);
     }
 
     public void deleteCrime(Crime crime) {
