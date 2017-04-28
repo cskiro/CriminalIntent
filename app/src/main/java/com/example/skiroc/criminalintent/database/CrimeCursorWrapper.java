@@ -5,6 +5,9 @@ import android.database.CursorWrapper;
 
 import com.example.skiroc.criminalintent.model.Crime;
 
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * Created by skiroc on 4/28/17.
  */
@@ -20,6 +23,11 @@ public class CrimeCursorWrapper extends CursorWrapper {
         long date = getLong(getColumnIndex(CrimeDbSchema.CrimeTable.Columns.DATE));
         int isSolved = getInt(getColumnIndex(CrimeDbSchema.CrimeTable.Columns.SOLVED));
 
-        return null;
+        Crime crime = new Crime(UUID.fromString(uuidString));
+        crime.setTitle(title);
+        crime.setDate(new Date(date));
+        crime.setSolved(isSolved != 0);
+
+        return crime;
     }
 }
