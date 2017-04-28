@@ -33,6 +33,7 @@ public class CrimeLab {
 
     public void addCrime(Crime crime) {
         ContentValues values = getContentValues(crime);
+        
         mDatabase.insert(CrimeDbSchema.CrimeTable.NAME, null, values);
     }
 
@@ -42,6 +43,15 @@ public class CrimeLab {
 
     public Crime getCrime(UUID id) {
         return null;
+    }
+
+    public void updateCrime(Crime crime) {
+        String uuidString = crime.getId().toString();
+        ContentValues values = getContentValues(crime);
+
+        mDatabase.update(CrimeDbSchema.CrimeTable.NAME, values,
+                CrimeDbSchema.CrimeTable.Columns.UUID + " = ?",
+                new String[] { uuidString });
     }
 
     private static ContentValues getContentValues(Crime crime) {
