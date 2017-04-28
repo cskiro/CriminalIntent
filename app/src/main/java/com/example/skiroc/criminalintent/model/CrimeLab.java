@@ -49,5 +49,7 @@ public class CrimeLab {
         values.put(CrimeDbSchema.CrimeTable.Columns.TITLE, crime.getTitle());
         values.put(CrimeDbSchema.CrimeTable.Columns.DATE, crime.getDate().getTime());
         values.put(CrimeDbSchema.CrimeTable.Columns.SOLVED, crime.isSolved() ? 1 : 0);
+
+        return values;
     }
 }
