@@ -2,6 +2,7 @@ package com.example.skiroc.criminalintent.model;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.skiroc.criminalintent.database.CrimeBaseHelper;
@@ -41,7 +42,7 @@ public class CrimeLab {
     }
 
 
-    public Crime getCrime(UUID id) {
+    public Crime getCrimes(UUID id) {
         return null;
     }
 
@@ -62,5 +63,20 @@ public class CrimeLab {
         values.put(CrimeDbSchema.CrimeTable.Columns.SOLVED, crime.isSolved() ? 1 : 0);
 
         return values;
+    }
+
+    private Cursor queryCrimes(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                CrimeDbSchema.CrimeTable.NAME,
+                null, // Columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null,
+                null, // groupBy
+                null, // having
+                null // orderBy
+        );
+
+        return  cursor;
     }
 }
