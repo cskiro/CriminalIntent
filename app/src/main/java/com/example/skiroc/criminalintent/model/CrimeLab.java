@@ -1,12 +1,12 @@
 package com.example.skiroc.criminalintent.model;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.skiroc.criminalintent.database.CrimeBaseHelper;
+import com.example.skiroc.criminalintent.database.CrimeDbSchema;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -41,5 +41,13 @@ public class CrimeLab {
 
     public Crime getCrime(UUID id) {
         return null;
+    }
+
+    private static ContentValues getContentValues(Crime crime) {
+        ContentValues values = new ContentValues();
+        values.put(CrimeDbSchema.CrimeTable.Columns.UUID, crime.getId().toString());
+        values.put(CrimeDbSchema.CrimeTable.Columns.TITLE, crime.getTitle());
+        values.put(CrimeDbSchema.CrimeTable.Columns.DATE, crime.getDate().getTime());
+        values.put(CrimeDbSchema.CrimeTable.Columns.SOLVED, crime.isSolved() ? 1 : 0);
     }
 }
