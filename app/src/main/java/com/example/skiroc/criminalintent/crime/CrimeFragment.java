@@ -46,7 +46,7 @@ public class CrimeFragment extends Fragment {
     private static final String DIALOG_DATE = "DialogDate";
 
     private static final int REQUEST_DATE = 0;
-    private static  final int REQUEST_CONTACT = 1;
+    private static final int REQUEST_CONTACT = 1;
 
     /**
      * Instance (member) variables
@@ -154,7 +154,7 @@ public class CrimeFragment extends Fragment {
             }
         });
 
-        mReportButton = (Button)view.findViewById(R.id.crime_report);
+        mReportButton = (Button) view.findViewById(R.id.crime_report);
         mReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,6 +170,12 @@ public class CrimeFragment extends Fragment {
 
         final Intent pickContact = new Intent(Intent.ACTION_PICK,
                 ContactsContract.Contacts.CONTENT_URI);
+
+        /**
+         *  DUMMY CODE TO DISABLE 'Choose Suspect' button
+         *  This simulates the user's device not having a Contacts app
+         */
+        //pickContact.addCategory(Intent.CATEGORY_HOME);
         mSuspectButton = (Button) view.findViewById(R.id.crime_suspect);
         mSuspectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +199,7 @@ public class CrimeFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.menu_item_delete_crime:
                 UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
                 CrimeLab crimeLab = CrimeLab.getCrimeLab(getActivity());
@@ -207,7 +213,7 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_crime, menu);
     }
@@ -226,7 +232,7 @@ public class CrimeFragment extends Fragment {
         } else if (requestCode == REQUEST_CONTACT && data != null) {
             Uri contactUri = data.getData();
             // Specify which fields you want your query to return values for.
-            String[] queryFields = new String[] {
+            String[] queryFields = new String[]{
                     ContactsContract.Contacts.DISPLAY_NAME
             };
             // Perform your query
@@ -277,6 +283,6 @@ public class CrimeFragment extends Fragment {
         String report = getString(R.string.crime_report,
                 mCrime.getTitle(), dateString, solvedString, suspect);
 
-        return  report;
+        return report;
     }
 }
