@@ -157,6 +157,7 @@ public class CrimeFragment extends Fragment {
                 intent.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
                 intent.putExtra(Intent.EXTRA_SUBJECT,
                         getString(R.string.crime_report_subject));
+                intent = Intent.createChooser(intent, getString(R.string.send_report));
                 startActivity(intent);
             }
         });
