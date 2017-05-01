@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.skiroc.criminalintent.datepicker.DatePickerFragment;
 import com.example.skiroc.criminalintent.model.Crime;
@@ -58,6 +60,8 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSolvedCheckBox;
     private Button mSuspectButton;
     private Button mReportButton;
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         // Creating a Bundle object
@@ -203,6 +207,9 @@ public class CrimeFragment extends Fragment {
                 PackageManager.MATCH_DEFAULT_ONLY) == null) {
             mSuspectButton.setEnabled(false);
         }
+
+        mPhotoButton = (ImageButton) view.findViewById(R.id.crime_camera);
+        mPhotoView = (ImageView) view.findViewById(R.id.crime_photo);
 
         return view;
     }
