@@ -28,7 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.skiroc.criminalintent.PictureUtils;
+import com.example.skiroc.criminalintent.utils.PictureUtils;
 import com.example.skiroc.criminalintent.datepicker.DatePickerFragment;
 import com.example.skiroc.criminalintent.model.Crime;
 import com.example.skiroc.criminalintent.model.CrimeLab;

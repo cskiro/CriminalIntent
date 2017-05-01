@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.skiroc.criminalintent.CrimePagerActivity;
+import com.example.skiroc.criminalintent.crimepager.CrimePagerActivity;
 import com.example.skiroc.criminalintent.model.Crime;
 import com.example.skiroc.criminalintent.model.CrimeLab;
 import com.example.skiroc.criminialintent.R;
