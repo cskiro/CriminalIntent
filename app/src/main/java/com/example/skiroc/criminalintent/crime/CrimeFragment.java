@@ -31,6 +31,7 @@ import com.example.skiroc.criminalintent.model.Crime;
 import com.example.skiroc.criminalintent.model.CrimeLab;
 import com.example.skiroc.criminialintent.R;
 
+import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
@@ -55,6 +56,7 @@ public class CrimeFragment extends Fragment {
      * Instance (member) variables
      */
     private Crime mCrime;
+    private File mPhotoFile;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
@@ -93,6 +95,7 @@ public class CrimeFragment extends Fragment {
         // along with a type-specific "get" method of Bundle
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.getCrimeLab(getActivity()).getCrime(crimeId);
+        mPhotoFile = CrimeLab.getCrimeLab(getActivity()).getPhotoFile(mCrime);
         setHasOptionsMenu(true);
     }
 
