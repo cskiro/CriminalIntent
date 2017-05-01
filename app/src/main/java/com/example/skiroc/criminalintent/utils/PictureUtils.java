@@ -1,4 +1,4 @@
-package com.example.skiroc.criminalintent;
+package com.example.skiroc.criminalintent.utils;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
